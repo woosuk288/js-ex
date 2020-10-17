@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>restaurant</title>
+    <script src="libs/jquery-1.12.4.min.js"></script>
+    <script src="libs/slickSlider/slick.min.js"></script>
+    <script src="js/index.js"></script>
+    
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/restaurant.css">
+    
+    <!-- header, footer -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+
+<body>
+    <div id="wrapper">
+       
+        <div id="header">
+            <h1><a href="home.html">요기요</a></h1>
+
+            <ul>
+                <li><a href="#" class="search">검색</a></li>
+                <li><a href="#" class="mymenu" id="mymenu">마이메뉴</a></li>
+                <li><a href="question.html" class="customer">고객센터</a></li>
+            </ul>
+            <div id="gps">
+                <a href="#" class="marker">marker</a>
+                <input type="text" value="화곡동 341-1"> 
+                <a href="#" class="down_arrow">down arrow</a>
+            </div>
+
+           <div class="submenu" id="submenu">
+                <span class="edge"></span>
+                <ul>
+                   <li><a href="signIn.html">로그인</a></li>
+                   <li><a href="#">회원가입</a></li>
+                   <li><a href="#">장바구니</a></li>
+                   <li><a href="#">쿠폰함</a></li>
+                   <li><a href="#">비회원 주문내역</a></li>
+                   <li><a href="#">리뷰관리</a></li>
+                   <li><a href="#">요기요 추천하기</a></li>
+                   <li><a href="#">설정</a></li>
+                </ul>
+           </div>
+               
+        </div>    <!--header-->
+        
+        <div id="mainbanner">
+            업체광고
+        </div>
+
+        <div id="food_kind" class="center">
+            <ul class="gnb">
+                <li><a href="#">치킨</a></li>
+                <li><a href="#">중국집</a></li>
+                <li><a href="#">한식</a></li>
+                <li><a href="#">피자</a></li>
+                <li><a href="#">양식</a></li>
+            </ul>
+            <div class="naviarrow">
+                <a href="#" class="prev">left arrow</a>
+                <a href="#" class="next">right arrow</a>
+            </div>
+        </div>
+
+        <!--mainbanner-->
+        <div id="content">
+            <div class="our_plus">
+                <div class="content_title clearfix">
+                    <h2>우리동네 플러스</h2>
+                    <a href="#" class="content_ad">ⓘ광고</a>
+                </div>
+                <ul id="restaurant_ad" class="clearfix">
+                    <li class="restaurant">
+                        <a href="foodDetail.html">
+                            <div class="imgbox"><img src="img/chicken1.png" alt=""></div>
+                            <div class="txt">
+                                <h3>굽네치킨 - 우장산동점</h3>
+                                <p></p>
+
+                                <span class="grade">4.5</span>
+                                <span class="comment">210</span>
+                                <span class="delivery_time">40~50</span>
+                                <div class="mark">
+                                    <h5 class="good">우수</h5>
+                                    <h5 class="cesco">CESCO</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="foodDetail.html">
+                            <div class="imgbox"><img src="img/chicken2.png" alt=""></div>
+                            <div class="txt">
+                                <h3>네네치킨 - 신월1동점</h3>
+                                <p></p>
+
+                                <span class="grade">4.4</span>
+                                <span class="comment">954</span>
+                                <span class="delivery_time">40~50</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="foodDetail.html">
+                            <div class="imgbox"><img src="img/chicken3.png" alt=""></div>
+                            <div class="txt">
+                                <h3>처갓집양념치킨 - 신정1점</h3>
+                                <p></p>
+
+                                <span class="grade">4.5</span> 
+                                <span class="comment">210</span>
+                                <span class="delivery_time">40~50</span>
+                                <div class="mark">
+                                    <h5 class="cesco">CESCO</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!--restaurant_ad-->
+            </div>
+
+            <div class="section_line"></div>
+
+            <div class="our_store">
+                <div class="content_title clearfix">
+                    <h2>요기요 등록 음식점</h2>
+                    <a href="#" class="content_q_mark"> ? </a>
+                </div>
+                <ul id="restaurant_list" class="clearfix">
+                    <li class="restaurant">
+                        <a href="foodDetail.html">
+                            <div class="imgbox"><img src="img/chicken4.png" alt=""></div>
+                            <div class="txt">
+                                <h3>치킨의프로 - 까치산점</h3>
+                                <p></p>
+                                <span class="grade">4.6</span> 
+                                <span class="comment">110</span>
+                                <span class="delivery_time">40~50</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="foodDetail.html">
+                            <div class="imgbox"><img src="img/chicken5.png" alt=""></div>
+                            <div class="txt">
+                                <h3>교촌치킨 - 목동오거리점</h3>
+                                <p></p>
+
+                                <span class="grade">4.5</span>
+                                <span class="comment">210</span>
+                                <span class="delivery_time">40~50</span>
+                                <div class="mark">
+                                    <h5 class="good">우수</h5>
+                                    <h5 class="cesco">CESCO</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="foodDetail.html">
+                            <div class="imgbox"><img src="img/chicken6.png" alt=""></div>
+                            <div class="txt">
+                                <h3>페리카나 - 화곡1점</h3>
+                                <p></p>
+
+                                <span class="grade">4.5</span>
+                                <span class="comment">210</span>
+                                <span class="delivery_time">40~50</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="foodDetail.html">
+                            <div class="imgbox"><img src="img/chicken7.png" alt=""></div>
+                            <div class="txt">
+                                <h3>KFC - 목동사거리점</h3>
+                                <p></p>
+
+                                <span class="grade">4.5</span>
+                                <span class="comment">210</span>
+                                <span class="delivery_time">40~50</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="#">
+                            <div class="imgbox"><img src="img/chicken8.png" alt=""></div>
+                            <div class="txt">
+                                <h3>못말리는파닭 - 신월점</h3>
+                                <p></p>
+
+                                <span class="grade">4.5</span>
+                                <span class="comment">210</span>
+                                <span class="delivery_time">40~50</span>
+                                <div class="mark">
+                                    <h5 class="cesco">CESCO</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="#">
+                            <div class="imgbox"><img src="img/chicken1.png" alt=""></div>
+                            <div class="txt">
+                                <h3>굽네치킨 - 화곡4동점</h3>
+                                <p></p>
+
+                                <span class="grade">4.5</span>
+                                <span class="comment">210</span>
+                                <span class="delivery_time">40~50</span>
+                                <div class="mark">
+                                    <h5 class="good">우수</h5>
+                                    <h5 class="cesco">CESCO</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="#">
+                            <div class="imgbox"><img src="img/chicken2.png" alt=""></div>
+                            <div class="txt">
+                                <h3>네네치킨 - 화곡1동점</h3>
+                                <p></p>
+
+                                <span class="grade">4.0</span>
+                                <span class="comment">130</span>
+                                <span class="delivery_time">40~50</span>
+                                <div class="mark">
+                                    <h5 class="cesco">CESCO</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="#">
+                            <div class="imgbox"><img src="img/chicken3.png" alt=""></div>
+                            <div class="txt">
+                                <h3>처갓집양념치킨 - 화곡점</h3>
+                                <p></p>
+
+                                <span class="grade">4.5</span>
+                                <span class="comment">210</span>
+                                <span class="delivery_time">40~50</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="restaurant">
+                        <a href="#">
+                            <div class="imgbox"><img src="img/chicken4.png" alt=""></div>
+                            <div class="txt">
+                                <h3>치킨의프로 - 우장산동점</h3>
+                                <p></p>
+
+                                <span class="grade">4.2</span>
+                                <span class="comment">260</span>
+                                <span class="delivery_time">40~50</span>
+                            </div>
+                        </a>
+                    </li>
+
+                </ul>
+                <!--restaurant_list-->
+            </div>
+            <!--our_store-->
+        </div>
+        <!--content-->
+
+        <div id="filter">
+            <a href="#">필터 <span class="filter_img">모양</span></a>
+        </div>
+        
+        <div id="footer">
+            <div class="center">
+                <ul class="sns">
+                    <li class="insta"><a href="">인스타그램</a></li>
+                    <li class="twr"><a href="">트위터</a></li>
+                    <li class="fb"><a href="">페이스북</a></li>
+                    <li class="question"><a href="">입점문의</a></li>
+                </ul>
+                <p>유한회사 알지피코리아는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 상품/ 거래정보 및 거래와 관련하여 요기요에 등록된 판매자의 고의 또는 과실로 에 대해 유한회사 알지피코리아는 책임을 지지 않습니다. 상품 및 거래에 관하여 보다 정확한 정보는 해당 판매자에게 직접 확인하여 주시기 바랍니다. </p>
+                <address>
+                    Copyright &copy; YOGIYO. All Rights Reserved.
+                </address>
+                <ul class='terms'>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">통합포인트정책</a></li>
+                    <li><a href="#">채용정보</a></li>
+                    <li><a href="#">요기요사장님</a></li>
+                    <li><a href="#">공지사항</a></li>
+                </ul>
+            </div>
+        </div>    <!--footer-->
+    </div>
+    <!--wrapper-->
+</body>
+</html>

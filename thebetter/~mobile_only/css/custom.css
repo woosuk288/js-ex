@@ -1,0 +1,5 @@
+input,select,textarea,button {vertical-align:middle}
+button {border:0 none;background-color:transparent;cursor:pointer}
+
+a { display: block; }
+pt10 { padding-top: 10px; }

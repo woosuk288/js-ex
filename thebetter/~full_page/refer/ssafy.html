@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp -->
+<html lang="ko" class="js supports preserve3d placeholder displaytable display-table fontface mediaqueries boxsizing csstransforms csstransforms3d no-csstransformslevel2 csstransitions" style=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+	<meta property="og:title" content="삼성 청년 소프트웨어 아카데미">
+	<meta property="og:image" content="/swp/images/sns_img.png"> 
+	<meta property="og:url" content="https://www.ssafy.com"> 
+	<meta property="og:description" content="삼성 청년 SW 아카데미| 소프트웨어 교육, 취업 지원, 코딩 교육">
+	<meta name="description" content="삼성 청년 SW 아카데미| 소프트웨어 교육, 취업 지원, 코딩 교육">
+	<title>삼성 청년 소프트웨어 아카데미</title>
+	
+    <link rel="stylesheet" type="text/css" href="./ssafy_file/font.css">
+    <link rel="stylesheet" type="text/css" href="./ssafy_file/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="./ssafy_file/common.css">
+    
+    <script src="./ssafy_file/jquery-1.11.0.min.js.다운로드"></script>
+    <script src="./ssafy_file/jquery-ui.min.js.다운로드"></script>
+    <script src="./ssafy_file/jquery.easing.1.3.js.다운로드"></script>
+    <script src="./ssafy_file/select2.min.js.다운로드"></script>
+    <script src="./ssafy_file/modernizr-custom.js.다운로드"></script>
+    <script src="./ssafy_file/front-ui.js.다운로드"></script>
+	<script src="./ssafy_file/kakao.min.js.다운로드"></script>
+    
+    <script type="text/javascript" src="./ssafy_file/netfunnel.js.다운로드" charset="UTF-8"></script>  유입통제 서비스   
+    <script type="text/javascript" src="./ssafy_file/swpSkin.js.다운로드" charset="UTF-8"></script>  유입통제 서비스 스킨   
+<!--    <script type="text/javascript" src="./ssafy_file/swpCommonUtil.js.다운로드"></script>  운영서버이관후 c_sslHost 추가  -->
+    <script type="text/javascript" src="./ssafy_file/swpCommonURL.js.다운로드"></script>  운영서버이관후 c_sslHost 추가  
+    
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).bind("keydown keypress", function(e){
+				var rx = /INPUT|SELECT|TEXTAREA/i;
+				if( e.which == 8 ){ // 8:backspace
+					if( !(rx.test(e.target.tagName) && !(e.target.disabled || e.target.readOnly)) ){
+						e.preventDefault();
+					}
+				}
+		    });	
+			
+			if(fnGetIsMobile()){
+				alert("회원가입 및 지원 접수는 PC에서만\n가능합니다.");	
+				window.location.replace('/');	
+			}
+		});
+	</script>
+
+
+<link rel="stylesheet" type="text/css" href="./ssafy_file/main.css">
+<script src="./ssafy_file/TweenMax.js.다운로드"></script>
+<script type="text/javascript">
+	//
+	$(document).ready(function(){
+
+		if(document.referrer.indexOf('ssafy.com') < 0 && document.referrer.indexOf('youthsw.com') < 0){
+			window.location.replace('/');
+		}
+
+		// 넷퍼넬 종료
+		NetFunnel_Complete({});
+		
+		// 지원접수 기간 안내 클릭 이벤트
+		$(document).on('click','.visual-notice a',function(e){
+	        e.preventDefault();
+	        var targetHref = $(this).attr('href'),
+	            targetScroll = $(targetHref).offset().top - 100;
+	        $('html,body').stop().animate({scrollTop:targetScroll}, 1000 );
+	    });
+		
+		// 이벤트 팝업 확인
+		/* if ( fnGetCookiePopup( "swp_popup1" )!= "checked" ){
+			layer_popup('#eventPop1');				
+		} */
+		
+		// 이벤트 팝업 확인
+		/* if ( fnGetCookiePopup( "swp_popup2" )!= "checked" ){
+			layer_popup('#eventPop2');				
+		} */
+		
+		// 공지사항 조회
+		procsNotice();
+	});
+	
+	function procsNotice() {
+	    $.ajax({
+	        type		: "POST"
+	       ,url		    : "/ksp/servlet/swp.main.controller.SwpMainServlet"
+	       ,traditional : true
+	       ,dataType	: "json"
+	       ,data		: {	 "p_process" 	: 'notice-list-ax' }
+	       ,success	    : function(data, status) { }
+	       ,complete	: function(res, status) {
+				$("#id_main_notice").html(res.responseText);
+	       }
+	   });
+	}
+	
+	function goNoticeView(tabseq, seq) {
+		$.ajax({
+			 type		: "POST"
+			,url		: "/ksp/servlet/swp.common.controller.SwpCommBoardServlet"
+			,traditional: true
+			,dataType	: "html"
+			,data		: {	 "p_process" 	: 'main-notice-view-ax' 
+							,"p_tabseq" 	: tabseq
+							,"p_seq" 		: seq
+						  }
+			,success	: function(data, status) { 
+				$("#pop-notice .pop_contents").html(data);
+				$(".notice-area .layerpop").click();
+			}
+			,error		: function(request, status, error) { 
+				$("#pop-notice .pop_contents").html("");
+			}			
+			,complete	: function(res, status) {
+			}
+		});
+	}
+	
+	function fnCloseLayerPop(closeStatus, cookieNm, id){
+		if(closeStatus == "Y"){
+			fnSetCookiePopup(cookieNm, "checked" , 1);
+		}
+		layer_close('#'+id);
+	}
+</script>
+<!-- header -->
+
+
+
+
+
+
+
+<script src="./ssafy_file/ts.wseq"></script></head>
+
+<body class="main" style="">
+	
+	<form name="ffMove" id="ffMove">
+		<input type="hidden" name="p_process" id="p_process" value="">
+		<input type="hidden" name="p_receipt_seq" id="p_receipt_seq" value="">
+	</form>
+
+    <div id="wrap">
+        <!-- header -->
+        <header class="header">
+            <div class="inner">
+                <div class="logo">
+                
+                    <img src="./ssafy_file/logo.png" alt="홈으로 가기">
+                    
+                </div>
+                <div class="nav">
+		
+                    <div class="util-text">
+                        <a href="javascript:fnGoHome();">아카데미 소개</a>
+                        <a href="javascript:fnLoginReqMsg()">지원하기</a>
+                        <a href="javascript:fnGoSwTest()">SW적성진단</a>
+                        <a href="javascript:fnGoFaq()">FAQ</a>
+                    </div>		
+                    <div class="util-btn">
+                        <a href="javascript:fnGoLogin();" class="icon log-in"><span class="blind">로그인</span></a>
+                        <a href="javascript:fnGoMemberJoin();" class="icon join"><span class="blind">회원가입</span></a>
+                    </div>	
+		
+                </div>
+            </div>
+        </header>
+        <!-- //header -->
+
+<!-- //header -->
+    <!-- container -->
+    <div id="container" class="container main">
+        <div class="container-header">
+            <div class="sub-visual type3">
+                <div class="txt-area">
+                    <div class="txt2" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);">삼성 청년 소프트웨어 아카데미</div>
+                    <div class="txt3" style="opacity: 1; transform: matrix(1, 0, 0, 1, 0, 0);"><strong>1기 교육생</strong>을 <strong>모집</strong>합니다</div>
+                    <!-- <div class="visual-notice">
+                        <div class="notice-inner">
+                            <p>SW적성진단은<br>선택한 두 개의 응시일정 중</p>
+                            <a href="javascript:;" style="cursor: default; border-bottom:none">한 개의 시간에만<br>응시 가능합니다.</a>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            
+            <!--lnb-->
+            <div class="lnb">
+                <ul>
+                    <li class="box is_active">
+                        <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#section1">
+                            <i class="icon main-lnb-case1"></i>
+                            <div class="text">프로그램 소개</div>
+                        </a>
+                    </li>
+                    <li class="box">
+                        <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#section2">
+                            <i class="icon main-lnb-case2"></i>
+                            <div class="text">자격 및 지원내용</div>
+                        </a>
+                    </li>
+                    <li class="box">
+                        <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#section3">
+                            <i class="icon main-lnb-case3"></i>
+                            <div class="text">선발 프로세스</div>
+                        </a>
+                    </li>
+                    <li class="box">
+                        <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#section4">
+                            <i class="icon main-lnb-case4"></i>
+                            <div class="text">문의 및 공지사항</div>
+                        </a>
+                    </li>
+                    
+					<!-- 지원하기 
+                    <li class="box qualification link-type">
+                        <a href="javascript:fnLoginReqMsg();">
+                           	<i class="icon main-lnb-case5"></i>
+                            <div class="text">지원하기</div>
+                        </a>
+                    </li>
+                    -->
+					<li class="box qualification link-type">
+						<a href="javascript:fnGoSwTest();">
+							<i class="icon main-lnb-case5"></i>
+							<div class="text">SW적성진단</div>
+                      </a>
+                    </li>
+					<!--
+                    <li class="box qualification link-type">
+                        <a href="javascript:fnLoginReqMsg();">
+                            <i class="icon main-lnb-case6"></i>
+                            <div class="text">지원현황조회</div>
+                        </a>
+                    </li>
+                    <li class="box qualification link-type">
+                        <a href="http://www.multicampus.com/">
+                            <i class="icon main-lnb-case7"></i>
+                            <div class="text">Interview 결과</div>
+                        </a>
+                    </li>
+					 //-->
+					 
+                </ul>
+            </div>
+            <!--// lnb-->
+
+        </div>
+        <!-- section 1 -->
+        <section class="section section1" id="section1">
+            <!-- intro -->
+            <div class="inner intro-area">
+                <div class="intro-header ani animated s0-6 fadeInUp">
+                    <div class="text-box">
+                        <h3 class="section-title">프로그램 소개</h3>
+                        <p>고용노동부의 취업 지원 노하우와 <br>삼성의 소프트웨어 교육 경험을 바탕으로,<br>취업 준비생에게 소프트웨어 역량 향상 교육 및 <br>다양한 취업지원 서비스를 제공하여 취업에 <br>성공하도록 돕는 프로그램입니다.</p>
+                        <p class="small-notice">※ 본 교육 과정은 삼성전자가 주관하고 고용노동부가 함께 합니다.<br>&nbsp;&nbsp;&nbsp;(전체 교육 운영은 멀티캠퍼스에 위탁 실시)</p>
+                    </div>
+                    <div class="img-box"><img src="./ssafy_file/section1-img01.jpg" alt=""></div>
+                </div>
+                <div class="dlist ani delay-0-5s animated s0-6 fadeInUp">
+                    <dl>
+                        <dt>교육장소</dt>
+                        <dd>전국 4개 지역 (서울, 대전, 광주, 구미)</dd>
+                    </dl>
+                    <dl>
+                        <dt>교육시간</dt>
+                        <dd>09:00~18:00 집합교육(주말, 공휴일 제외)</dd>
+                    </dl>
+                </div>
+                <p class="desc type2 ani delay-1s animated s0-6 fadeInUp">교육장소는 교육생 규모/편의 및 교육장 시설 여건에 따라 변동 가능 ,  별도 숙소 제공 없이 통학 원칙</p>
+				<ul class="process-list ani delay-1-5s animated s0-6 fadeInUp">
+				    <li>
+				        <em class="num">1</em>
+				        <span class="strong">1학기 기본과정(5개월)</span>
+				        <p>· 기초 코딩 역량을 갖춘 신입<br>&nbsp;&nbsp;소프트웨어 개발자 육성</p>
+				    </li>
+				    <li>
+				        <em class="num">2</em>
+				        <span class="strong">1차 Job Fair(1개월)</span>
+				        <p>· 수준별 진로 코칭<br>· 취업 활동 및 채용 정보 중점지원</p>
+				    </li>
+				    <li>
+				        <em class="num">3</em>
+				        <span class="strong">2학기 심화과정(5개월)</span>
+				        <p>· 프로젝트 수행을 통한 소프트웨어<br>&nbsp;&nbsp;개발자 육성</p>
+				    </li>
+				    <li>
+				        <em class="num">4</em>
+				        <span class="strong">2차 Job Fair(1개월)</span>
+				        <p>· 맞춤형 경력 설계<br>· 취업 활동 및 채용 정보 중점지원</p>
+				    </li>
+				</ul>
+            </div>
+        </section>
+
+        <!-- section 2 -->
+        <section class="section section2" id="section2">
+            <div class="inner qualification-area">
+                <div class="col-wrap ani animated s0-6 fadeInUp">
+                    <div class="column col">
+                        <h3 class="section-title">지원자격</h3>
+                        <dl>
+                            <dt>대&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 상</dt>
+                            <dd>
+	                            <ul class="dot-list">
+									<li>연령 : 만 29세 이하<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1989.01.01 이후 출생자 限</li>
+									<li>학력 : 국내외 4년제 대학(학사 이상)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 졸업자 및 2019년 2월 졸업 예정자(전공 무관)</li>
+	                        	</ul>
+                        	</dd>
+                        </dl>
+                        <dl>
+                            <dt>재직여부</dt>
+                            <dd>
+                                <ul class="dot-list">
+									<li>현재 미취업자 대상</li>
+									<li>지원서 접수 마감일(2018.11.02)부터<br>본 교육 시작일(2018.12.10)전까지<br>재직(예정)자 지원불가(4대보험 가입 여부기준)</li>
+									<li>교육기간 중 취업 성공 시 입사일 전 교육 종료</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <dl>
+                            <dt>기타사항</dt>
+                            <dd>
+                                <ul class="dot-list">
+									<li>2018.12.10 교육 입과 가능한 자</li>
+									<li>교육기간 중 통학 가능한 자(별도 숙소 제공 없음)</li>
+									<li>병역필 또는 면제자로 해외여행에 결격 사유가 없는 자</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="column col">
+                        <div class="img">
+                            <img src="./ssafy_file/section2-img01.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-wrap ani delay-0-5s animated s0-6 fadeInUp">
+                    <div class="column col">
+                        <div class="img">
+                            <img src="./ssafy_file/section2-img02.jpg" alt="">
+                        </div>
+
+                    </div>
+                    <div class="column col tal">
+                        <h3 class="section-title">지원내용</h3>
+						<ul class="dot-list">
+						    <li>소프트웨어 교육 무료 제공 및 교육지원비 月 100만원 지급</li>
+						    <li>성적우수자 삼성전자 해외연구소 실습기회 부여<br>(기본 과정 이후)</li>
+						    <li>진로상담 및 개인별 취업지원 서비스 제공</li>
+						    <li>교육 중 삼성 SW TEST 응시기회 제공<br>(삼성 공채 지원시 결과 인정)</li>
+						    <li>단계별 교육 종료 후 1개월씩 Job Fair 운영</li>
+						</ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- section 3 -->
+        <section class="section section3" id="section3">
+            <div class="inner process-area">
+                <div class="tit-area ani animated s0-6 fadeInUp">
+                    <h3 class="section-title">선발 프로세스</h3>
+                    <p class="lead">전체 일정은 내부 사정에 따라 변동될 수 있습니다.</p>
+                </div>
+                <div class="col-wrap">
+                    <div class="col ani delay-0-2s animated s0-6 fadeInUp">
+                        <dl class="step1">
+                            <dt><em>1</em>지원서 접수</dt>
+                            <dd>2018.10.22 ~ 2018.11.02</dd>
+                        </dl>
+                    </div>
+                    <div class="col ani delay-0-6s animated s0-6 fadeInUp">
+                        <dl class="step2">
+                            <dt><em>2</em>SW적성진단 <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#none" class="tooltip" title="지원서 접수 이후 온라인 CBT(Computing Based Test) 방식으로 진행되며, SW 개발에 기초가 되는 사고력과
+                                추론 능력을 측정하는 전형&lt;em&gt;(지원서 제출 완료되면 SW적성진단 응시 관련 별도 안내 예정)&lt;/em&gt;"></a></dt>
+                            <dd>2018.11.05 ~ 2018.11.07</dd>
+                        </dl>
+                    </div>
+                    <div class="col ani delay-1s animated s0-6 fadeInUp">
+                        <dl class="step3">
+                            <dt><em>3</em>Interview 진행</dt>
+                            <dd>2018.11.19 ~ 2018.11.22</dd>
+                        </dl>
+                    </div>
+                    <div class="col ani delay-1-4s animated s0-6 fadeInUp">
+                        <dl class="step4">
+                            <dt><em>4</em>입과 및 교육</dt>
+                            <dd>2018.12.10 ~ 2019.12.09</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- section 4 -->
+        <section class="section section4" id="section4">
+            <div class="inner">
+                <div class="cscenter-area ani animated s0-6 fadeInUp">
+                    <div class="tit-area">
+                        <h3 class="section-title">문의</h3>
+                        <a href="javascript:fnLoginReqMsg();" class="text-link right">문의하기</a>
+                    </div>
+                    <div class="dlist">
+                        <dl>
+                            <dt>이메일 문의</dt>
+                            <dd class="icon-email"><a href="mailto:ssafy@multicampus.com">ssafy@multicampus.com</a></dd>
+                        </dl>
+                        <dl>
+                            <dt>전화문의</dt>
+                            <dd class="icon-phone">02-3429-5100</dd>
+                        </dl>
+                    </div>
+                    <div class="btn-wrap">
+                        <a href="javascript:fnGoFaq();" class="btn btn-md btn-wide">FAQ 바로가기</a>
+                    </div>
+                </div>
+                <div class="notice-area ani delay-0-5s animated s0-6 fadeInUp">
+                    <h3 class="section-title">공지사항</h3>
+                    <div id="id_main_notice">
+
+
+
+
+
+
+
+
+	<table class="tbl-list">
+	    <caption><span class="blind">공지사항 목록</span></caption>
+	    <colgroup>
+	        <col style="width: 130px">
+	        <col>
+	    </colgroup>	
+		
+				
+				<tbody><tr>
+		            <td class="date">2018.10.22</td>
+		            <td><a href="javascript:goNoticeView(&#39;226504&#39;,&#39;2&#39;);">SW 적성진단 응시 안내</a></td>
+		            
+	       	</tr>	
+			
+				
+				<tr>
+		            <td class="date">2018.10.20</td>
+		            <td><a href="javascript:goNoticeView(&#39;226504&#39;,&#39;1&#39;);">삼성 청년SW 아카데미 모집 설명회 (10/24~10/30)</a></td>
+		            
+	       	</tr>	
+			
+	</tbody></table>
+
+</div>
+                    <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#pop-notice" class="layerpop" style="display:none;">공지사항 Layer Popup 띄우기</a>
+					<form method="post" id="fileDownForm" name="fileDownForm">
+					<input type="hidden" name="p_process" id="p_process" value="">
+					<input type="hidden" name="p_grcode" id="p_grcode" value="swpnotice">
+					<input type="hidden" name="p_savefile" id="p_savefile" value="">
+					<input type="hidden" name="p_realfile" id="p_realfile" value="">
+					</form>
+					<iframe name="_iframe" width="0%" title="fileDownload" height="0%" src="./ssafy_file/saved_resource.html"></iframe>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- //container -->
+    
+	<!-- 공지사항 팝업 -->
+	<div class="modal pop_wrap notice" id="pop-notice">
+	    <div class="pop_head">
+	        <h2>상세보기</h2>
+	        <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" class="close"><i class="icon pop-close"></i><span class="blind">닫기</span></a>
+	    </div>
+		<div class="pop_contents">
+		</div>
+	</div>
+	<!--// 공지사항 팝업 -->
+	<!-- 20181009 이벤트 팝업 추가 -->
+	<div class="pop_wrap event-type" id="eventPop1">
+	    <div class="pop_contents">
+	        <div class="post_txt">
+	            <img src="./ssafy_file/event-pop-bg.jpg" alt="삼성 청년SW 아카데미 1기 모집 대한민국 SW를 이끌 청년들을 찾습니다. 선발프로세스 지원서 접수(10월22일~11월2일) SW적성진단 (11월5일 ~11월 7일) 인터뷰 (11월말) 교육 시작 (12월 10일 이후) 전체 일정은 내부 사정에 따라 변동될 수 있습니다. 지원내용 SW교육 무료 제공 및 교육지원비 월 100만원 지급 성적우수자 삼성전자 해외연구소 실습기회 부여 진로상담 및 개인별 취업지원 서비스 제공 교육 중 삼성 SW TEST 응시기회 제공 (삼성 공채 지원시 결과 인정)">
+	        </div>
+	    </div>
+	    <div class="pop_foot">
+	        <div class="full-btn-wrap">
+	            <button type="button" class="btn btn-sm btn-primary" onclick="fnCloseLayerPop(&#39;Y&#39;,&#39;swp_popup1&#39;,&#39;eventPop1&#39;)" title="오늘하루 열지 않기">오늘하루 열지 않기</button><button type="button" class="btn btn-sm btn-default" onclick="fnCloseLayerPop(&#39;N&#39;,&#39;swp_popup1&#39;,&#39;eventPop1&#39;)" title="닫기">닫기</button>
+	        </div>
+	    </div>
+	</div>
+	<!-- 20181009 이벤트 팝업 추가 -->
+	
+	<script type="text/javascript"> 
+	    mainVisualMotion();
+	</script>
+	
+    <!-- 뒤로가기 기능 막기 - 로그인 아웃 후 처리 -->
+    
+
+<!-- footer -->
+
+
+
+
+
+
+
+        <!-- footer -->
+        <footer id="footer" class="footer">
+            <div class="inner">
+                <div class="area_terms">
+                    <h3 class="blind">정책 및 약관</h3>
+                    <ul class="part-list">
+                        <li><a href="https://www.ssafy.com/ksp/jsp/swp/etc/swpPolicy.jsp">이용약관</a></li>
+                        <li><a href="https://www.ssafy.com/ksp/jsp/swp/etc/swpPrivacy.jsp" class="fc-blue">개인정보처리방침</a></li>
+                    </ul>
+                </div>
+				<div class="sns-area">
+				    <ul>
+				        <li><a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" onclick="fnSnsConfirmLayer(&#39;kat&#39;)" title="카카오톡"><i class="icon sns-kakao"><span class="blind">카카오톡에 공유하기</span></i></a></li>
+				        <li><a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" onclick="fnSnsConfirmLayer(&#39;kas&#39;)" title="카카오스토리"><i class="icon sns-kakao-story"><span class="blind">카카오스토리에 공유하기</span></i></a></li>
+				        <li><a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" onclick="fnSnsConfirmLayer(&#39;fac&#39;)" title="페이스북"><i class="icon sns-facebook"><span class="blind">페이스북에 공유하기</span></i></a></li>
+				        <li><a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" onclick="fnSnsConfirmLayer(&#39;twt&#39;)" title="트위터"><i class="icon sns-twitter"><span class="blind">트위터에 공유하기</span></i></a></li>
+				        <li><a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" onclick="fnSnsConfirmLayer(&#39;lin&#39;)" title="라인"><i class="icon sns-line"><span class="blind">라인에 공유하기</span></i></a></li>
+				        <li><a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" onclick="fnSnsConfirmLayer(&#39;ban&#39;)" title="밴드"><i class="icon sns-band"><span class="blind">밴드에 공유하기</span></i></a></li>
+				        <li><a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" onclick="fnSnsConfirmLayer(&#39;nbl&#39;)" title="네이버 블로그"><i class="icon sns-naver-blog"><span class="blind">네이버 블로그에 공유하기</span></i></a></li>
+				    </ul>
+				</div>                
+                <address>
+                    (주)멀티캠퍼스 서울특별시 강남구 언주로 508 10-17층(역삼동, 서울상록빌딩)<br>
+                    <em>고객센터 02-3429-5100</em>  평일 상담시간 : 09:00 ~ 18:00 / 휴일 상담시간 : 09:00 ~ 18:00(휴일 점심시간 12:00 ~ 13:00 제외)<br>
+                </address>
+                <p>Copyright by Multicampus Co., Ltd. All rights reserved.</p>
+            </div>
+        </footer>
+        <!--// footer -->
+		<!-- sns 공유하기 팝업 예시 -->
+		<div class="modal pop_wrap alert-type" id="snsShare1">
+			<div class="pop_contents">
+		        <div class="post_txt">
+		            <em id="id_sns_name"></em><br>
+		            <span>공유 하시겠습니까?</span>
+		        </div>
+		        <div class="btn-wrap tac">
+		            <button type="button" class="btn btn-sm btn-default close">취소</button>
+		            <a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp#" id="id_sns_link" class="btn btn-sm btn-primary">확인</a>
+		        </div>
+		    </div>
+		</div>
+		
+		<div id="id_sns_confirm"></div>
+		<!-- //sns 공유하기 팝업 -->
+    </div>
+
+
+
+<!-- //footer -->
+
+
+<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div></body></html>

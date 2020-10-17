@@ -1,0 +1,133 @@
+@import url(index.css);
+
+#wrapper {
+    width: 100%; height: 100%;
+    position: fixed;
+}
+#outer_rect {
+    width: 800px;
+    height: 800px;
+    margin: auto;
+    background: #ec1c2f;
+    border-radius: 50px;
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    
+    overflow: hidden;
+}
+#ribborn {
+    height: 300px;
+    width: 100%;
+    background: #f0001e;  /* f0001e */
+    color: #fff;
+    text-align: center;
+    font:   70px bold;
+    line-height: 450px;
+    transform: rotate(45deg);
+    box-shadow: 0 0 30px 3px #acb0af;
+    
+    position: absolute;
+    top: -10%;
+    right: -40%;
+}
+#inner_circle {
+    width: 760px;
+    height: 760px;
+    border-radius: 50%;
+    background: #fff;    
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+#inner_circle .logo {
+    position: absolute;
+    top: 110px;
+    left: 50%;
+    margin-left: -125px;
+}
+#inner_circle .logo .txt {
+    display: block;
+    float: left;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50%;
+    background: #f00;
+    color: #fff;
+    text-align: center;
+    font-size: 44px;
+    
+    border: 5px solid #fff;
+    margin-left: -20px;
+/*    box-sizing: border-box;*/
+}
+#inner_circle .logo .txt:nth-child(2) {
+    background: #fec10f;
+}
+#inner_circle > form {
+    position: absolute;
+    top: 290px;
+    left: 200px;
+    
+}
+fieldset { border: none }
+#inner_circle > form input {
+    display: block;
+}
+
+#inner_circle p#terms {
+    width: 260px;
+    height: 40px;
+    font-size: 13px;
+    margin: 20px auto 0;
+    text-align: center;
+}
+#inner_circle form input {
+/*    color: #fff;*/
+    border: 1px solid #ff7d00;
+    font-size: 14px;
+
+    
+}
+#inner_circle form input::placeholder {
+    color: #ff7d00;
+    font-weight: bold;
+}
+
+input[type="email"] {
+/*    border: 1px solid #ff7d00;*/
+    text-indent: 20px;
+    width: 360px;
+    height: 50px;
+    box-sizing: border-box;
+}
+input[type="submit"] {
+    cursor: pointer;
+    width: 360px;
+    height: 50px;
+    background: #fff;
+    margin-top: 10px;
+    text-align: left;
+    text-indent: 100px;
+}
+input[type="submit"].email_btn {
+    background: url(../img/sign/email.svg) no-repeat 10% center;    
+}
+input[type="submit"].google_btn {
+    background: url(../img/sign/google.svg) no-repeat 10% center;    
+}
+input[type="submit"].facebook_btn {
+    background: url(../img/sign/facebook.svg) no-repeat 10% center;    
+}
+
+
+input[type="submit"]:nth-of-type(3) { margin-top: 40px; }
+
+#terms a {
+    color: #ff7d00;
+    font-weight: bold;
+}
+
+#terms a:hover{
+    text-decoration: underline;
+}

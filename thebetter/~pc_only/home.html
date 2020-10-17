@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요기요</title>
+    
+    <script src="libs/jquery-1.12.4.min.js"></script>
+    	<!-- 플러그인 js -->
+	<script src="libs/slickSlider/slick.min.js"></script>
+	<!-- 플러그인 css -->
+	<link rel="stylesheet" href="libs/slickSlider/slick.css">
+<!--	<link rel="stylesheet" href="libs/slickSlider/slick-theme.css">-->
+    
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/home.css">
+    
+    <script src="js/index.js"></script>
+    
+    <!-- header, footer -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+</head>
+<body>
+    <div id="wrapper">
+        <!-- header.html -->
+        <div id="header">
+            <h1><a href="home.html">요기요</a></h1>
+
+            <ul>
+                <li><a href="#" class="search">검색</a></li>
+                <li><a href="#" class="mymenu" id="mymenu">마이메뉴</a></li>
+                <li><a href="question.html" class="customer">고객센터</a></li>
+            </ul>
+            <div id="gps">
+                <a href="#" class="marker">marker</a>
+                <input type="text" value="화곡동 341-1"> 
+                <a href="#" class="down_arrow">down arrow</a>
+            </div>
+
+           <div class="submenu" id="submenu">
+                <span class="edge"></span>
+                <ul>
+                   <li><a href="signIn.html">로그인</a></li>
+                   <li><a href="#">회원가입</a></li>
+                   <li><a href="#">장바구니</a></li>
+                   <li><a href="#">쿠폰함</a></li>
+                   <li><a href="#">비회원 주문내역</a></li>
+                   <li><a href="#">리뷰관리</a></li>
+                   <li><a href="#">요기요 추천하기</a></li>
+                   <li><a href="#">설정</a></li>
+                </ul>
+           </div>
+               
+        </div>    <!--header-->
+        
+        <div id="mainbanner">
+            <ul class="slide">
+                <li class="main01"><a href="#"><img src="img/mainbanner.png" alt=""></a></li>
+                <li class="main02"><a href="#"><img src="img/mainbanner1.png" alt=""></a></li>
+                <li class="main03"><a href="#"><img src="img/mainbanner2.png" alt=""></a></li>
+            </ul>
+        </div>    <!--mainbanner-->
+        
+        <div id="content1">
+           <div class="center">
+                <h2>배달 키워드</h2>
+                <p>실시간으로 테마별 인기 음식들을 만나보세요.</p>
+                <div class="foodkind_nav">
+                    <ul>
+                        <li><a href="restaurant.html">치킨</a></li>
+                        <li><a href="restaurant.html">중국집</a></li>
+                        <li><a href="restaurant.html">피자/양식</a></li>
+                        <li><a href="restaurant.html">분식/디저트</a></li>
+                        <li><a href="restaurant.html">한식</a></li>
+    <!--
+                        <li><a href="#">족발/보쌈</a></li>
+                        <li><a href="#">일식/돈까스</a></li>
+                        <li><a href="#">야식</a></li>
+                        <li><a href="#">1인분 주문</a></li>
+                        <li><a href="#">전체보기</a></li>
+    -->
+                    </ul>
+                    <div class="naviarrow">
+                        <a href="#" class="prev">left arrow</a>
+                        <a href="#" class="next">right arrow</a>    
+                    </div>
+                </div>
+                <div id="store">
+                    <div>
+                       <a href="foodDetail.html"><img src="img/chicken1.png" alt="굽네치킨"></a>
+                    </div>
+                    <div>
+                       <a href="foodDetail.html"><img src="img/chicken2.png" alt="네네치킨"></a>
+                    </div>
+                    <div>
+                       <a href="foodDetail.html"><img src="img/chicken3.png" alt="처갓집양념치킨"></a>
+                    </div>
+                    <div>
+                       <a href="foodDetail.html"><img src="img/chicken4.png" alt="치킨의프로"></a>
+                    </div>
+                    <div>
+                       <a href="foodDetail.html"><img src="img/chicken5.png" alt="교촌치킨"></a>
+                    </div>
+                    <div>
+                       <a href="foodDetail.html"><img src="img/chicken6.png" alt="페리카나"></a>
+                    </div>
+                    <div>
+                       <a href="foodDetail.html"><img src="img/chicken7.png" alt="KFC"></a>
+                    </div>
+                    <div>
+                       <a href="foodDetail.html"><img src="img/chicken8.png" alt="더 보기"></a>
+                    </div>
+                </div>
+                
+                <a href="restaurant.html" class="more">더보기</a>
+           </div>
+        </div>    <!--content1-->
+        
+        <div id="ad">
+           <ul class="ad_banner">
+               <li class="ad_image01"><a href="#"></a></li>
+               <li class="ad_image02"><a href="#"></a></li>
+               <li class="ad_image03"><a href="#"></a></li>
+           </ul>
+<!--
+           <ul class="ad_nav">
+               <li><a href="#"></a></li>
+               <li><a href="#"></a></li>
+               <li><a href="#"></a></li>
+           </ul>
+-->
+        </div>    <!--ad-->
+
+        <div id="content2">
+            <div class="center">
+               <h2>배달되지 않던 인기 맛집</h2>
+               <p>이제는 <span class="txt_red">배달돼요!</span></p>
+               <div class="menu">
+                    <div class="ly_img_line slide_multi">
+                        <div class="img_line">
+                            <a href="foodDetail.html">
+                                <img src="img/imgd1.png" alt="아비꼬 목동파라곤점">    
+                            </a>
+                            <h3>아비꼬 목동파라곤점</h3>
+                            <h4>
+                                <span class="star_on">별점</span> 
+                                <span class="txt_orange"> 4.8</span>
+                                 · 리뷰 6
+                            </h4>
+                        </div>
+                        <div class="img_line">
+                            <a href="foodDetail.html">
+                                <img src="img/imgd2.png" alt="신선설농탕 목동점">
+                            </a>
+                            <h3>신선설농탕 목동점</h3>
+                            <h4><span class="star_off">별점 0.0</span></h4>
+                        </div>
+                        <div class="img_line">
+                            <a href="foodDetail.html">
+                                <img src="img/imgd3.png" alt="신의주찹쌀순대 등촌점">    
+                            </a>
+                            <h3>신의주찹쌀순대 등촌점</h3>
+                            <h4>
+                                <span class="star_on">별점</span>
+                                <span class="txt_orange">  3.6</span>
+                                 · 리뷰 8
+                                </h4>
+                        </div>
+                        <div class="img_line">
+                            <a href="foodDetail.html">
+                                <img src="img/imgd4.png" alt="댓짱돈까스 목동점">       
+                            </a>
+                            <h3>댓짱돈까스 목동</h3>
+                            <h4>
+                                <span class="star_on">별점</span>
+                                <span class="txt_orange"> 4.7</span>
+                                 · 리뷰 3
+
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="naviarrow">
+                        <a href="#" class="left_arrow red_arrow">left arrow</a>
+                        <a href="#" class="right_arrow red_arrow">right arrow</a>
+                    </div>
+<!--                    <a href="#" class="right_arrow">right arrow</a>-->
+               </div>
+           </div>
+        </div>    <!--content2-->
+        
+        <div id="content3">
+            <div class="center">
+               <h2>우리 동네 신규 맛집</h2>
+                <p>새로 <span class="txt_red">오픈했어요!</span></p>
+               <div class="menu">
+                    <div class="ly_img_line">
+                        <div class="img_line">
+                            <a href="foodDetail.html">
+                                <img src="img/imgn1.png" alt="에페커피">    
+                            </a>
+                            <h3>에페커피</h3>
+                            <h4><span class="star_off">별점</span>  0.0</h4>
+                        </div>
+                        <div class="img_line">
+                            <a href="foodDetail.html">
+                                <img src="img/imgn2.png" alt="프로이 목동점">    
+                            </a>
+                            <h3>프로이 목동점</h3>
+                            <h4>
+                                <span class="star_off">별점</span> 0.0
+                            </h4>
+                        </div>
+                        <div class="img_line">
+                            <a href="foodDetail.html">
+                                <img src="img/imgn3.png" alt="홍대칼국수와족발 목동점">   
+                            </a>
+                            <h3>홍대칼국수와족발 목동점</h3>
+                            <h4><span class="star_off">별점</span> 0.0</h4>
+                        </div>
+                        <div class="img_line">
+                            <a href="foodDetail.html">
+                                <img src="img/imgn4.png" alt="달달애">    
+                            </a>
+                            <h3>달달애</h3>
+                            <h4><span class="star_off">별점</span> 0.0</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="naviarrow">
+                        <a href="#" class="left_arrow red_arrow">left arrow</a>
+                        <a href="#" class="right_arrow red_arrow">right arrow</a>
+                    </div>
+               </div>
+           </div>
+        </div>    <!--content3-->
+        
+        <div id="footer">
+            <div class="center">
+                <ul class="sns">
+                    <li class="insta"><a href="">인스타그램</a></li>
+                    <li class="twr"><a href="">트위터</a></li>
+                    <li class="fb"><a href="">페이스북</a></li>
+                    <li class="question"><a href="">입점문의</a></li>
+                </ul>
+                <p>유한회사 알지피코리아는 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 상품/ 거래정보 및 거래와 관련하여 요기요에 등록된 판매자의 고의 또는 과실로 에 대해 유한회사 알지피코리아는 책임을 지지 않습니다. 상품 및 거래에 관하여 보다 정확한 정보는 해당 판매자에게 직접 확인하여 주시기 바랍니다. </p>
+                <address>
+                    Copyright &copy; YOGIYO. All Rights Reserved.
+                </address>
+                <ul class='terms'>
+                    <li><a href="#">이용약관</a></li>
+                    <li><a href="#">개인정보처리방침</a></li>
+                    <li><a href="#">통합포인트정책</a></li>
+                    <li><a href="#">채용정보</a></li>
+                    <li><a href="#">요기요사장님</a></li>
+                    <li><a href="#">공지사항</a></li>
+                </ul>
+            </div>
+        </div>    <!--footer-->
+    </div>    <!--wrapper-->
+
+</body>
+</html>

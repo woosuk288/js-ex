@@ -1,0 +1,240 @@
+#mainbanner {
+    height: 400px;
+    background: #ff0000;
+}
+
+#food_kind {
+    box-sizing: border-box;
+    width: 950px;
+    padding: 80px 0 30px 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+#food_kind .gnb {}
+
+#food_kind li {
+    float: left;
+}
+
+#food_kind li > a {
+    display: block;
+
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #f00;
+    margin-left: 10px;
+    border-radius: 25px;
+}
+
+#food_kind li > a:hover {
+    background: #f00;
+    color: #fff;
+}
+
+#food_kind li:first-child > a {
+    margin-left: 0;
+}
+
+#food_kind .naviarrow a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    /*    top: 0;*/
+    text-indent: -9999px;
+}
+
+#food_kind .naviarrow a.prev {
+    background: url(../img/leftarrow.png) no-repeat top;
+    left: 0;
+    margin-left: 30px;
+}
+
+#food_kind .naviarrow a.next {
+    background: url(../img/rightarrow.png) no-repeat top;
+    right: 0;
+    margin-right: 30px;
+}
+
+#content {
+    width: 1200px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#content .section_line {
+    width: 1120px;
+    margin: 0 auto 30px;
+    border-bottom: 10px solid #ff7d00;
+}
+
+#content .content_title {
+    margin-bottom: 20px;
+}
+
+#content .content_title > h2 {
+    font-size: 30px;
+    /*    font-weight: normal;*/
+    /*    text-align: left;*/
+    margin-left: 40px;
+    float: left;
+    /*    background: #f00;*/
+}
+
+#content .content_title > a {
+    display: block;
+    float: left;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    /*    background: #f00;*/
+    border: 1px solid #333;
+    border-radius: 30px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+#content .content_title > .content_q_mark {}
+
+#content .content_title > .content_q_mark {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+#content .restaurant {
+    /*    height: 440px;*/
+    margin: 0 40px 40px;
+    float: left;
+}
+
+#content .restaurant a {
+    display: block;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    width: 320px;
+}
+
+#content .restaurant .imgbox {
+    width: 320px;
+    height: 240px;
+    /*    background: #7FC4FD;*/
+    text-align: center;
+}
+
+#content .restaurant .imgbox img {
+    widows: 100%;
+    height: 240px;
+
+}
+
+#content .restaurant .txt {
+    box-sizing: border-box;
+    height: 140px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+#content .restaurant .txt h3 {
+    font-size: 20px;
+}
+
+#content .restaurant .txt h4 {
+/*    float: left;*/
+/*    font-size: 14px;*/
+/*    height: 20px;*/
+/*    line-height: 20px;*/
+}
+
+#content .restaurant .txt span {
+    display: block;
+    float: left;
+    height: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 38px;
+    padding-left: 30px;
+    padding-top: 3px;
+}
+
+#content .restaurant .txt .grade {
+    background: url(../img/r_grade.svg) no-repeat left -1px;    
+    background-size: 20px;
+}
+
+#content .restaurant .txt .comment {
+    background: url(../img/r_comment.svg) no-repeat left 1px;
+    background-size: 20px;
+}
+
+#content .restaurant .txt .delivery_time {
+    background: url(../img/r_time.svg) no-repeat left 0px;
+    background-size: 20px;
+}
+
+.restaurant p {
+    padding: 14px 0;
+}
+
+#content .restaurant .txt .mark {
+    margin: 35px auto 5px;
+    height: 30px;
+}
+
+#content .restaurant .txt .mark h5 {
+    /*    float: left;*/
+    display: inline-block;
+/*    text-align: center;*/
+}
+
+#content .restaurant .txt .mark .good {
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    color: #fff;
+    border-radius: 30px;
+    background: #ff7d00;
+    text-align: center;
+}
+
+#content .restaurant .txt .mark .cesco {
+    width: 50px;
+    height: 20px;
+    background: url(../img/cesco.png) no-repeat;
+    background-size: contain;
+    text-indent: -9999px;
+}
+
+
+#filter {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -80px;
+}
+
+#filter > a {
+    display: block;
+    width: 160px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #f00;
+    border-radius: 25px;
+    background: #f00;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+#filter .filter_img {
+    display: inline-block;
+    width: 20px;
+    height: 40px;
+    text-indent: -9999px;
+    background: url(../img/options_white.svg) no-repeat center;
+}
+

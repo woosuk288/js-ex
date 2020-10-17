@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		@import url(css/restaurant.css);
+		
+		html, body { overflow: hidden;}
+
+		.dimmWrap {
+			background: #555;
+			opacity: 0.6;
+			position: fixed;
+			width: 100%;
+			height: 100%;
+		}
+
+		.popupWrap {
+			background: #fff;
+/*			border: 1px solid #000;*/
+			border-radius: 50%;
+			width: 36%;
+			height: 36%;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
+		.alertImg {
+			width: 64px;
+			height: 64px;
+			margin: 100px auto 10px;
+			background: url(img/attention.svg) no-repeat;
+			background-size: cover;
+		}
+
+		.msg {
+			margin: 5% auto 5%;
+			width: 80%;
+			font-weight: bold;
+		}
+
+		.btnWrap {
+			position: absolute;
+			width: 100%;
+			bottom: 10%;
+			text-align: center;
+		}
+	
+		.closeBtn {
+			position: absolute;
+			top: 0;
+			right: 0;
+			background: #fff;
+			cursor: pointer;
+		}
+		.
+	</style>
+</head>
+
+<body>
+
+	<div class="dimmWrap">
+		<div class="popupWrap">
+			<div class="alertImg"></div>
+			<p class="msg">
+				본사이트는 상업적인 목적인 아닌 개인 포트폴리오 용도로 만들어졌습니다. 홈페이지의 일부 내용고 이미지 등은 출처가 따로 있음을 밝힙니다.
+			</p>
+			<div class="btnWrap">
+				<input type="checkbox" class="closeChk">
+				<button class="closeBtnToday">오늘 하루 동안 안보기</button>
+			</div>
+			<button class="closeBtn">X</button>
+		</div>
+
+	</div>
+
+
+
+</body>
+</html>

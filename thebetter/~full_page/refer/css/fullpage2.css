@@ -1,0 +1,57 @@
+@import url(reset.css);
+
+.section {
+	background-size: cover;
+	background-position: center;
+}
+
+#home-section { background-image: url(../img/lego/cover.png); }
+#about-section { background-image: url(../img/lego/bg.png); }
+#portfolio-section { background-image: url(../img/lego/bg2.png); }
+#video-section { background-image: url(../img/lego/bg4.png); }
+#contact-section { background-image: url(../img/lego/bg3.png); }
+
+#lego01 {
+	position: absolute;
+	left: -500px;
+	top: 120px;
+	opacity: 0;
+}
+
+#header {
+	position: fixed; bottom: 0; left: 0; width: 100%; z-index: 1000;
+	height: 100px; background: rgba(0,0,0, 0.8);
+}
+#header-logo {
+	position: absolute;
+	bottom: 0;
+	margin: 30px;
+}
+#header-gnb {
+	margin-left: 200px; margin-top: 20px;
+}
+#header-gnb li {
+	float: left;
+	margin: 0 5px;
+}
+#header-gnb li a {
+	display: block;
+	height: 40p;
+	padding: 0 20px;
+	border: 1px solid rgba(255,255,255,0.45);
+	line-height: 40px;
+	color: rgba(255,255,255,0.45);
+	transition: all 0.4s
+}
+#header-gnb li a:hover {
+	background-color: #fff;
+	color: #333;
+	border-radius: 5px;
+}
+#header-gnb li.on a {
+	border-bottom: 3px solid #fff;
+	color: #fff;
+	border-bottom-left-radius: 5px;
+	
+	border-bottom-right-radius: 5px;
+}

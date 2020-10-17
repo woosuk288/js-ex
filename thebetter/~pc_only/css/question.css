@@ -1,0 +1,168 @@
+
+#mainbanner {
+    width: 100%;
+    height: 500px;
+    background: #ec1c2f;
+    position: relative;
+}
+#mainbanner #what_help {
+    position: absolute;
+    left: 20%;
+    top: 30%;
+}
+#mainbanner h2{
+    color: #fff;
+    font-weight: normal;
+    font-size: 3rem;
+}
+#mainbanner #banner_circle {
+    position: absolute;
+    background: #fff;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    left: 60%;
+    top: 10%;
+}
+#mainbanner .search {
+    width: 368px;
+    position: relative;
+}
+#mainbanner .search_icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(../img/search.png) no-repeat;
+    background-size: 20px;
+    
+    text-indent: -9999px;
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    margin-top: -5px;
+    z-index: 100;
+}
+
+/* 출처 : https://code.i-harness.com/ko-kr/q/e006a */
+.search > input[type='text'] {
+    width: 340px;
+    height: 20px;
+    margin-top: 10px;
+    border: 0;
+
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background: #ffffff;
+}
+
+#main_content {}
+
+/* content1 */
+#main_content  li {
+    float: left;
+}
+#main_content  h2 {
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.center {
+    padding: 80px 0;
+}
+.center > ul {
+    padding-left: 50px;
+}
+#main_content  #content1 li{
+    margin:  0 40px;
+    background: rgba(255, 125, 0, 0.3)
+}
+
+
+#main_content  #content1 a {
+    display: block;
+    width: 360px;
+    height: 360px;
+}
+#main_content  #content1 a img {
+    display: inline-block;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #fff;
+    margin-top: 78px;
+}
+#main_content  #content1 a h3 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+#main_content  #content1 a p {
+    font-size: 14px;
+}
+
+/* content2 */
+
+#main_content  #content2 {}
+#main_content  #content2 li a {
+    display: block;
+    height: 110px;
+    width: 300px;
+    padding: 20px 20px 30px 40px ;
+    margin: 0 40px;
+    text-align: left;
+}
+#main_content  #content2 li a:hover {
+    background:rgba(255, 125, 0, 0.3)
+}
+#main_content  #content2 li a h3{
+    font-size: 20px;
+}
+#main_content  #content2 li a p{
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    height: 36px;
+}
+#main_content  #content2 li a span{
+    font-size: 12px;
+    font-weight: bold;
+    margin-left: 1px;
+}
+#main_content  #content2 li a:hover .more {
+    text-decoration: underline;
+}
+
+/* content3 */
+
+#main_content  #content3 li a {
+    display: block;
+    height: 110px;
+    width: 300px;
+    padding: 20px 20px 30px 40px ;
+    margin: 0 40px;
+    text-align: left;
+}
+#main_content  #content3 li a:hover {
+    background: rgba(255, 125, 0, 0.3)
+}
+#main_content  #content3 li a h3{
+    font-size: 20px;
+    
+}
+#main_content  #content3 li a h3 {
+    background: url(../img/q_Email.svg) no-repeat left center;
+    padding-left: 44px;
+
+}
+#main_content  #content3 li:nth-child(2) a h3 {
+    background: url(../img/q_Phone.svg) no-repeat left center;
+}
+#main_content  #content3 li:nth-child(3) a h3 {
+    background: url(../img/q_Location.svg) no-repeat left center;
+}
+
+#main_content  #content3 li a p{
+    font-size: 14px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,294 @@
+/*===================================================================================
+ * 시스템 			: SW아카데미 시스템 구축
+ * 프로그램 아이디  : swpCommonURL.js
+ * 프로그램 이름	: SW아카데미 시스템 개별화면에서의 각종 유틸리티성 작업에 대한 공통 자바스크립트
+ * 소스파일 이름 	: /jsp/swp/commonjs/swpCommonURL.js
+ * 파일설명     	: 기능적 유틸리티성 관련 작업처리를 위한 JavaScript file
+ * 버전        		: 1.0.0
+ * 생성일자    		: 2018-08-07
+ * 최종수정일자 	: 2018-08-07
+ * 최종수정내용 	:
+ * 라이센스  		: 본 프로그램 소스는 크레듀 사업처의 서면에 의한 사전 승인 없이 외부로 누설 되어서는 안됨. 
+ *     			      본 프로그램 소스는 크레듀 사업처의 사전 승인 없이 임의로 복제, 복사, 배포할 수 없음.
+ *==================================================================================*/ 
+
+
+/*=================================================================
+  GLOBAL 변수 지정
+=================================================================*/
+var URL_SW_MAIN = "https://www.ssafy.com";
+
+/*=================================================================
+SCRIPT NAME 		: goLoginPop
+EXPLAIN 			: 로그인 팝업
+WRITTEN DATE 		: 2013.04.01
+COMMENT 			:
+=================================================================*/
+function goLoginPop(grcode, site) {
+	self.name = 'logintarget';
+	window.open("/ksp/jsp/gate/common/popup_login.jsp?p_grcode="+grcode+"&p_site="+site,"loginPop","toolbar=no,statusbar=no,location=no,directories=no,realzable=no,status=yes,attribbar=no,scrollbars=no,width=448,height=448").focus();
+}  
+
+/* 메인페이지 */
+function fnGoMain() {
+    form = document.ffMove;
+    form.p_process.value = "select-maininfos";
+    form.action = "/ksp/servlet/swp.main.controller.SwpMainServlet";
+    form.target="_self";
+    form.submit();
+}
+
+/* 메인페이지 */
+function fnGoHome() {
+    var url = "/ksp/jsp/swp/swpMain.jsp";
+    location.href = url;
+}
+
+/* 로그인 페이지 이동 */
+function fnGoLogin() {
+    form = document.ffMove;
+    form.p_process.value = "swp-login";
+    form.action = "/ksp/servlet/swp.login.controller.SwpLoginServlet";
+    form.target="_self";
+    form.submit();
+}
+
+/* 로그아웃 */
+function fnGoLogout() {
+    form = document.ffMove;
+    form.p_process.value = "swp-logout";
+    form.action = "/ksp/servlet/swp.login.controller.SwpLoginServlet";
+    form.target="_self";
+    form.submit();
+}
+
+/* 로그아웃(Ajax)로 사용시  */
+function fnGoLogoutAjax() {
+    var data = {};
+    data.p_process="swp-logout-Ajax";
+    try{
+        //비동기식 작업을 요청한다.        
+        $.ajax({
+                type: "post",
+                url: "/ksp/servlet/swp.login.controller.SwpLoginServlet",
+                data: data,
+                dataType: "json",
+                cache:false,
+                async:false,                        
+                success : function(rdata, status) {
+                    if(rdata.isok == true) {
+                        alert('정상적으로 로그아웃이 처리되었습니다.');
+                        location.href = rdata.nexturl;
+                    } else {
+                        var msg = "에러가 발생하였습니다.[02-3429-5100]로 문의하여주십시오.";
+                        alert(msg);
+                    }
+                },
+                error : function(x, o, e){
+                    var msg = "에러가 발생하였습니다.[02-3429-5100]로 문의하여주십시오.";
+                    alert( msg + "\n" + x.status + " : "+ o +" : "+e);
+                }                   
+       });
+          
+    } catch(exception) {
+        var msg = "에러가 발생하였습니다.[02-3429-5100]로 문의하여주십시오.";
+        alert(msg);
+    }    
+}
+
+
+/* 회원가입 */
+function fnGoMemberJoin() {
+    form = document.ffMove;
+    form.p_process.value = "swp-member-join";
+    form.action = "/ksp/servlet/swp.member.controller.SwpMemberServlet";
+    form.target="_self";
+    form.submit();
+}
+
+/* 패스워드 찾기 */
+function fnGoMemberPwdSearch() {
+    form = document.ffMove;
+    form.p_process.value = "swp-member-pwd-search";
+    form.action = "/ksp/servlet/swp.member.controller.SwpMemberServlet";
+    form.target="_self";
+    form.submit();    
+}
+
+/* 회원정보관리 */
+function fnGoMemberManager() {
+    form = document.ffMove;
+    form.p_process.value = "swp-member-manager";
+    form.action = "/ksp/servlet/swp.member.controller.SwpMemberServlet";
+    form.target="_self";
+    form.submit();    
+}
+
+/* 회원정보수정 */
+function fnGoMemberModify() {
+    form = document.ffMove;
+    form.p_process.value = "swp-member-modify-pwd-chk";
+    form.action = "/ksp/servlet/swp.member.controller.SwpMemberServlet";
+    form.target="_self";
+    form.submit();    
+}
+
+/* 회원탈퇴 */
+function fnGoMemberwithRawal() {
+    if(confirm("회원 탈퇴시 지원 이력이 삭제됩니다.\n회원탈퇴를 하시겠습니까?")) {
+        form = document.ffMove;
+        form.p_process.value = "swp-member-withdrawal";
+        form.action = "/ksp/servlet/swp.member.controller.SwpMemberServlet";
+        form.target="_self";
+        form.submit();    
+    }
+        
+}
+
+/* 지원접수 */
+function fnGoApply(receiptseq) {
+    form = document.ffMove;
+    form.p_process.value = "apply-branch";
+    form.p_receipt_seq.value = receiptseq;
+    form.action = "/ksp/servlet/swp.apply.controller.SwpApplyServlet";
+    form.target="_self";
+    //유입통제 START
+    NetFunnel_Action({action_id:'apply_in'}, form);
+    //form.submit(); 
+}
+
+/* 지원현황조회 */
+function fnGoApplyReport() {
+    form = document.ffMove;
+    form.p_process.value = "select-applyreport-list";
+    form.action = "/ksp/servlet/swp.apply.controller.SwpApplyReportServlet";
+    form.target="_self";
+    //유입통제 START
+    NetFunnel_Action({action_id:'apply_result'}, form);
+    //form.submit(); 
+}
+
+/* 로그인안내 팝업 */
+function fnLoginReqMsg() {
+	if( confirm("로그인을 먼저하셔야 합니다. \n로그인 페이지로 이동하시겠습니까?") ) {
+		fnGoLogin();
+	}
+}
+
+/* 문의하기 */
+function fnGoQnA() {
+    form = document.ffMove;
+    form.p_process.value = "select-list";
+    form.action = "/ksp/servlet/swp.qna.controller.SwpQnaServlet";
+    form.target="_self";
+    form.submit(); 
+}
+
+/* FAQ */
+function fnGoFaq() {
+    form = document.ffMove;
+    form.p_process.value = "select-faq-list";
+    form.action = "/ksp/servlet/swp.faq.controller.SwpFaqServlet";
+    form.target="_self";
+    form.submit(); 
+}
+
+/* SW적성진단 */
+function fnGoSwTest() {
+    form = document.ffMove;
+    form.p_process.value = "swp-swtest-list";
+    form.action = "/ksp/servlet/swp.swtest.controller.SwpSwtestServlet";
+    form.target="_self";
+    form.submit(); 
+}
+
+/* 예시문제풀기 */
+function fnGoSolveQuest() {
+	fnCommonAlterLayer("모의테스트 안내", "모의테스트 안내", "SW적성진단 모의테스트가 곧 오픈될 예정입니다.<br>공지사항을 통해 안내하겠습니다.");
+}
+
+/* 적성진단 응시 */
+function fnGoSolveTest(grseq) {
+	var url    = "/ksp/credu/user/nexam/online_tc_view.jsp?p_grseq=" + grseq;
+	var status = "width=1200, height=900, scrollbars=yes,status=no,toolbar=no,resizable=0,location=no,menu=no,location=no,directories=no";
+    
+	if( getOsName() === "Mac OS X" ) {
+		var fullUrl = URL_SW_MAIN + url;
+		MaGetVersionMAC(fullUrl); 
+	}else{
+		popup = window.open(url, "solveTest", status);
+		popup.focus();
+	}
+	
+}
+
+/* 첨부파일 다운로드 */
+function doFileDownloads(filename, realname) {
+	$("#p_process"	, $("#fileDownForm")).val("file-download");
+	$("#p_savefile"	, $("#fileDownForm")).val(filename);
+	$("#p_realfile"	, $("#fileDownForm")).val(realname);
+	$("#fileDownForm").attr("target", "_iframe");
+	$("#fileDownForm").attr("action","/ksp/servlet/controller.gate.common.FileDownloadServlet").submit();
+	$("#fileDownForm").attr("target", "_self");
+}
+
+
+// kakaotalk 
+Kakao.init('fc8d662ecfeff97df5316a35effd4be2');	//www.ssafy.com
+function setKaTalkShare() {
+	Kakao.Link.sendDefault({
+		objectType	: 'feed',
+		content		: {
+		title		: '삼성 청년 소프트웨어 아카데미',
+		description	: '고용노동부의 취업 지원 노하우와 삼성의 소프트웨어 교육 경험을 바탕으로, 취업 준비생에게 소프트웨어 역량 향성 교육 및 다양한 취업지원 서비스를 제공하여 취업에 성공하도록 돕는 프로그램입니다.',
+		imageUrl	: 'https://www.ssafy.com/swp/images/sns_img.png',
+		link		: {
+						mobileWebUrl: URL_SW_MAIN,
+						webUrl: URL_SW_MAIN
+					  }
+		},
+		buttons: [{
+				title	: '웹으로 보기',
+				link	: {
+							mobileWebUrl: URL_SW_MAIN,
+							webUrl: URL_SW_MAIN
+						  }
+		}]
+	});
+}
+
+//SNS공유 
+function goSnsShare(snstype) {
+	var v_goUrl 	= "";
+	var v_swUrl 	= URL_SW_MAIN;
+	var v_enSwUrl 	= encodeURIComponent(v_swUrl);
+	var v_title 	= "삼성 청년 소프트웨어 아카데미";
+	var v_entitle 	= encodeURIComponent(v_title);
+	//var encSwUrl 	= encodeURI(encodeURIComponent(v_swUrl));
+	//var encTitle	= encodeURI(v_title);
+	//
+	
+	layer_close('#snsShare1');
+	if( snstype == "kat" ) {
+		//v_goUrl = "kakaolink://send?appkey=3e786f8df14fcfc89d159421a6a7c9b6&appver=1.0&apiver=3.0&linkver=3.5&forwardable=false&objs=[{objtype:button,text:{"+v_entitle+"},action:{type:web,url:{"+v_swUrl+"}}}]";
+		setKaTalkShare();
+		return;
+	} else if( snstype == "kas") {
+		v_goUrl = "https://story.kakao.com/share?url="+v_enSwUrl;
+	} else if( snstype == "fac" ) {
+		v_goUrl = "//www.facebook.com/sharer/sharer.php?u="+v_swUrl+"&t="+v_title;
+		//v_goUrl = "https://www.facebook.com/dialog/share?app_id={APP_ID}&display=popup&href={URL}&redirect_uri={REDIRECT_URI}";
+	} else if( snstype == "twt" ) {
+		v_goUrl = "//twitter.com/home?status="+v_entitle+" "+v_swUrl;
+	} else if( snstype == "lin") {
+		v_goUrl = "http://line.me/R/msg/text/?"+v_entitle+"%0D%0A"+v_enSwUrl;
+	} else if( snstype == "ban" ) {
+		v_goUrl = "http://www.band.us/plugin/share?body="+v_entitle+"%0A"+v_enSwUrl;
+	} else if( snstype == "nbl" ) {
+		v_goUrl = "https://share.naver.com/web/shareView.nhn?url="+v_enSwUrl+"&title="+v_entitle;
+	} else {
+		return false;
+	}
+	
+	window.open(v_goUrl);
+}

@@ -1,0 +1,316 @@
+
+/* header.css */
+
+
+
+#mainbanner {
+    min-width: 1440px;
+    background: #000;
+/*    height: 600px;*/
+}
+#mainbanner .main01 {
+    background-color: #ffe100;
+}
+#mainbanner .main02 {
+    background-color: #E70925;
+}
+#mainbanner .main03 {
+    background-color: #A2AE3C;
+}
+#mainbanner > ul > li > a {
+    display: block;
+    
+/*    width: 100%;*/
+/*    height: 600px;*/
+/*    background: url(../img/mainbanner.png) no-repeat center #ffe100;*/
+}
+.slide img { width: 100%;max-width: 1440px; margin: auto;}
+.slick-dots {
+    height: 60px;
+    text-align: center;
+    position: absolute;
+    left:0; right: 0; bottom: 10px;
+    
+}
+.slick-dots > li {
+    display: inline-block;
+}
+.slick-dots > li > button {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.5;
+    margin: 0 18px;
+    font-size: 0;
+}
+.slick-dots > li.slick-active > button {
+    background: #000;
+    opacity: 0.8;
+}
+
+
+.center {
+    width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+}
+.center > h2 {
+    font-size: 40px;
+}
+.center > p {
+    padding: 30px 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+.center .txt_red {
+    color: #f00;
+}
+
+
+#content1 {
+    padding: 80px 0 30px 0;
+    margin: auto;
+}
+
+#content1 .center ul {
+/*    width: 550px;*/
+    height: 50px;
+/*    overflow: auto;*/
+/*    white-space: nowrap;*/
+
+}
+#content1 .center ul li{
+/*    float: left;*/
+    display: inline-block;
+}
+#content1 .center ul li a, .more {
+    display: block;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #f00;
+    margin-left: 10px;
+    border-radius: 25px;
+    font-size: 16px;
+}
+.more {
+	margin: auto;
+	margin-bottom: 40px;
+}
+#content1 .center ul li a:hover, .more:hover {
+    background: #f00;
+    color: #fff;
+}
+#content1 .center ul li:first-child a {
+    margin-left: 0;
+/*    border: 0;*/
+}
+#content1 .center ul li:last-child a {
+/*    border: 0;*/
+}
+#content1 .foodkind_nav {
+    width: 1024px;
+    margin: 0 auto;
+    position: relative;
+}
+#content1 .naviarrow a {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    text-indent: -9999px;
+}
+#content1 .naviarrow a.prev {
+    background: url(../img/leftarrow.png) no-repeat top;
+    margin-left: 50px;
+}
+#content1 .naviarrow a.next {
+    background: url(../img/rightarrow.png) no-repeat top;
+    margin-right: 50px;
+    right: 0;
+}
+
+#content1 #store{
+    margin-top: 50px;
+    padding-left: 50px;
+    overflow: hidden;
+    
+}
+#content1 #store div {
+    width: 320px;
+    height: 320px;
+    float: left;
+    margin: 0 20px 20px 0;
+}
+#content1 #store div:nth-child(4), #content1 #store div:last-child {
+    margin-right: 0;
+}
+#content1 #store img {
+    width: 100%;
+    height: 100%;
+}
+
+#ad {
+    margin-top: -20px;
+/*    width: 100%; margin: auto;*/
+    height: 400px;
+    background: #aaa;
+    position: relative;
+    margin: auto;
+    min-width: 1440px;
+}
+#ad ul.ad_banner li a {
+    display: block;
+    width: 100%;
+    height: 400px;
+/*
+    position: absolute;
+    top: 0;
+    left: 0;
+*/
+}
+#ad ul.ad_banner li.ad_image01 a {
+    background: url(../img/ad1.png) no-repeat center #a31c20;
+    background-size: contain
+}
+#ad ul.ad_banner li.ad_image02 a {
+    background: url(../img/ad2.png) no-repeat center #1a8968;
+    background-size: contain
+}
+#ad ul.ad_banner li.ad_image03 a {
+    background: url(../img/ad3.png) no-repeat center #bc7e45;
+    background-size: contain
+}
+
+/*
+#ad ul.ad_nav {
+
+    height: 60px;
+    text-align: center;
+    padding-top: 340px;
+}
+#ad ul.ad_nav li {
+    display: inline-block;
+}
+#ad ul.ad_nav li a {
+    display: block;
+    float: left;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.5;
+    margin: 0 18px;
+}
+#ad ul.ad_nav li:nth-child(2) a {
+    background: #000;
+    opacity: 0.8;
+}
+*/
+
+/* content2 */
+#content2 {
+    padding: 80px 0;
+}
+
+.center > .menu {
+    overflow: hidden;
+    /* 340*3 + 220    */
+    width: 1240px;    
+    margin: 0 auto;
+    position: relative;
+    padding: 0 100px;
+}
+.center > .menu  a.red_arrow {
+    display: block;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    margin-top: 140px;
+    text-indent: -9999px;
+}
+.center > .menu .naviarrow a.left_arrow {
+    background: url(../img/leftarrow.png) no-repeat;
+    left: 40px;
+}
+.center > .menu .naviarrow a.right_arrow {
+    background: url(../img/rightarrow.png) no-repeat;
+    right: 40px;
+}
+/*
+.ly_img_line .slick-arrow { width: 40px; height: 40px; position: absolute; top: 0; bottom: 0; margin: auto; font-size: 0; }
+.ly_img_line .slick-prev { left: -70px; background-image: url(../img/leftarrow.png); }
+.ly_img_line .slick-next { right: -70px; background-image: url(../img/rightarrow.png); }
+*/
+
+
+.center .menu .img_line {
+    float: left;
+    width: 320px;
+    height: 320px;
+    margin: 0 10px;
+    background: #fafafa;
+    
+}
+.center .menu .img_line:nth-of-type(4) {
+    width: 200px;
+    overflow: hidden;
+}
+.center .menu .img_line img{
+    width: 320px;
+    height: 240px;
+    transition: all 0.5s;
+}
+.center .menu .img_line a {
+    display: block;
+    overflow: hidden;
+}
+    
+
+.center .menu .img_line > h3, h4 {
+    margin-top: 10px;
+    margin-left: 14px;
+    text-align: left;
+}
+.center .menu .img_line > h3 { font-size: 24px; }
+.center .menu .img_line > h4 {
+    color: #b1b1b1;
+    line-height: 22px;
+    font-size: 20px;
+    font-weight: normal;
+}
+.center .menu .img_line > h4 > .star_on {
+    display: inline-block;
+    background: url(../img/star1.png) no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    text-indent: -9999px;
+}
+.center .menu .img_line > h4 > .star_off {
+    display: inline-block;
+    background: url(../img/star2.png) no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    text-indent: -9999px;   
+}
+.center .menu .img_line > h4 > .txt_orange {
+    color: #ff7d00;
+}
+
+/* 효과 */
+.center .img_line > a:hover img {
+    transform: scale(1.06);
+}
+.center #store > div > a:hover img {
+    transform: scale(1.06);
+}
+
+
+
+/* footer.css */

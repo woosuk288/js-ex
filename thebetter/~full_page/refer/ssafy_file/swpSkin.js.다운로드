@@ -1,0 +1,26 @@
+if(typeof NetFunnel == "object"){
+	NetFunnel.SkinUtil.add('swpSkin',{
+		prepareCallback:function(){
+			var el = document.getElementById("NetFunnel_Loading_Popup");
+			el.style.top = "100px";
+		},
+		updateCallback:function(){
+			var el = document.getElementById("NetFunnel_Loading_Popup");
+			el.style.top = "100px";
+		},
+		htmlStr:'<div id="NetFunnel_Skin_Top" style="background-color:#ffffff;border:1px solid #9ab6c4;width:300px;"> \
+					<div class="modal pop_wrap wait-result fade" id="testCount1"> \
+						<div class="pop-sub-title"><strong>서비스 접속 대기 중입니다.</strong></div> \
+						<div class="pop_contents"> \
+							<i class="icon sandglass"></i> \
+							<div class="post_txt"> \
+						        <span class="time-tit">예상대기시간</span><br> \
+								<span id="NetFunnel_Loading_Popup_TimeLeft" class="%H시간 %M분 %02S초^ ^false" style="font-size:58px;line-height:1;font-weight:500;"></span> \
+						        <p class="count-notice">현재 접속자가 일시적으로 증가하여 <em><span id="NetFunnel_Loading_Popup_Count"></span></em>명이 대기중이며,<br>대기순서에 따라 자동 접속 됩니다.</p> \
+						        <p class="small-notice">새로 고침, 뒤로가기 또는 재접속하시면 대기시간이 더 길어집니다.</p> \
+						    </div> \
+						</div> \
+					</div> \
+			</div>'
+	},'normal');
+}

@@ -1,0 +1,250 @@
+﻿/*===================================================================================
+ * 시스템 			: SW아카데미 시스템 구축
+ * 프로그램 아이디  : swpCommonUtil.js
+ * 프로그램 이름	: SW아카데미 시스템 개별화면에서의 각종 유틸리티성 작업에 대한 공통 자바스크립트
+ * 소스파일 이름 	: /jsp/swp/commonjs/swpCommonUtil.js
+ * 파일설명     	: 기능적 유틸리티성 관련 작업처리를 위한 JavaScript file
+ * 버전        		: 1.0.0
+ * 생성일자    		: 2018-08-07
+ * 최종수정일자 	: 2018-08-07
+ * 최종수정내용 	:
+ * 라이센스  		: 본 프로그램 소스는 크레듀 사업처의 서면에 의한 사전 승인 없이 외부로 누설 되어서는 안됨. 
+ *     			      본 프로그램 소스는 크레듀 사업처의 사전 승인 없이 임의로 복제, 복사, 배포할 수 없음.
+ *==================================================================================*/ 
+
+ 
+/*=================================================================
+SCRIPT NAME 		: 
+EXPLAIN 			: 
+WRITTEN DATE 		: 
+COMMENT 			:
+=================================================================*/
+/* *
+ * Common Layer popup id
+ */
+var alertCommonLayerid   		= "common_pop_alert";
+var alertCommonHeaderId  		= "common_alert_header";
+var alertCommonTitleId   		= "common_alert_title";
+var alertCommonContentId 		= "common_alert_content";
+
+var alertCommonConfirmLayerid   = "common_pop_confirm";
+var alertCommonConfirmHeaderId  = "common_confirm_header";
+var alertCommonConfirmTitleId   = "common_confirm_title";
+var alertCommonConfirmContentId = "common_confirm_content";
+	
+/**
+ * 공백 문자인지 여부를 확인한다.
+ * 
+ * @version 1.0
+ * @since 2008.04.10
+ */
+function IsWhite(arg_ch) {
+    if(arg_ch == '\t' || arg_ch == ' ' || arg_ch == '\n')
+          return  true;
+    else  return  false;
+}
+
+/**
+ *  Common Alert Layer 구동 
+*/
+function fnCommonAlterLayer(header_text, title_text, content_text) {
+    $("#"+alertCommonHeaderId).text(header_text);
+    $("#"+alertCommonTitleId).text(title_text);
+    $("#"+alertCommonContentId).html(content_text);
+    layer_popup("#"+alertCommonLayerid);
+}
+
+
+/**
+ *  alert layer 구동 
+*/
+function fnAlterLayer(id, header_id, header_text, title_id, title_text, content_id, content_text) {
+    $("#"+header_id).text(header_text);
+    $("#"+title_id).text(title_text);
+    $("#"+content_id).html(content_text);
+    layer_popup("#"+id);
+}
+
+/**
+ * Common Alter Layer Close
+ */
+function fnCommonAlterLayerClose() {
+    layer_close("#"+alertCommonLayerid);
+    history.back(-1);
+}
+
+/**
+ * Common Alert Layer 페이지 이동 
+ */
+function fnCommonAlterLayerMove(url) {
+    layer_close("#"+alertCommonLayerid);
+    location.href = url;
+}
+
+
+/**
+ *  Common Alert Move Layer 구동 
+*/
+function fnAlterMoveLayerOpen(header_text, title_text, content_text) {
+    $("#common_alert_header_move").text(header_text);
+    $("#common_alert_title_move").text(title_text);
+    $("#common_alert_content_move").html(content_text);
+    layer_popup("#common_pop_alert_move");
+}
+
+function fnAlterMoveLayerClose(url, isclose) {
+	if( isclose == "Y" ) {
+		layer_close("#common_pop_alert_move");
+	}
+    if( url == "" ) {
+    	fnGoHome();
+    } else {
+    	location.href = url;
+    }
+}
+
+/**
+ *  Common Confirm Layer 구동 
+*/
+function fnCommonConfirmLayer(id, msg) {
+	return
+}
+
+/**
+ *  Common Alert Layer 구동 
+*/
+function fnCommonConfirmLayer(header_text, title_text, content_text) {
+    $("#"+alertCommonConfirmHeaderId).text(header_text);
+    $("#"+alertCommonConfirmTitleId).text(title_text);
+    $("#"+alertCommonConfirmContentId).html(content_text);
+    layer_popup("#"+alertCommonConfirmLayerid);
+}
+
+/**
+ * Common Alter Layer Close
+ */
+function fnCommonConfirmLayerClose() {
+    layer_close("#"+alertCommonConfirmLayerid);
+    history.back(-1);
+}
+
+/**
+ * Common Alert Layer 페이지 이동 
+ */
+function fnCommonConfirmLayerMove(url) {
+    layer_close("#"+alertCommonConfirmLayerid);
+    location.href = url;
+}
+
+/**
+ *  SNS Confirm Layer 구동 
+*/
+function fnSnsConfirmLayer(snstype) {
+	var v_snsname = "";
+	if( snstype == "kat" ) {
+		v_snsname = "카카오톡";
+	} else if( snstype == "kas" ) {
+		v_snsname = "카카오스토리";
+	} else if( snstype == "fac" ) {
+		v_snsname = "페이스북";
+	} else if( snstype == "twt" ) {
+		v_snsname = "트위터";
+	} else if( snstype == "lin" ) {
+		v_snsname = "라인";
+	} else if( snstype == "ban" ) {
+		v_snsname = "밴드";
+	} else if( snstype == "nbl" ) {
+		v_snsname = "네이버 블로그";
+	}
+	
+	$("#id_sns_link").attr("href", "javascript:goSnsShare('"+snstype+"');");
+    $("#id_sns_name").text(v_snsname+"에");
+    layer_popup("#snsShare1");
+}
+
+/**
+ * Layer Popup 설정일 동안 안보이게 처리
+*/
+function fnSetCookiePopup(name, value, expiredays){	
+	var todayDate = new Date();
+	todayDate.setDate( todayDate.getDate() + expiredays );
+	document.cookie = name + "=" + escape( value ) + "; path=/; expires="+ todayDate.toGMTString() + ";"
+}
+
+/**
+ * Layer Popup 브라우져 쿠키정보 조회
+*/
+function fnGetCookiePopup(strName){
+	var strArg = new String(strName + "=");
+	var nArgLen, nCookieLen, nEnd;
+	var i = 0, j;
+	nArgLen    = strArg.length;
+	nCookieLen = document.cookie.length;
+	if(nCookieLen > 0) {
+		while(i < nCookieLen) {
+			j = i + nArgLen;
+			if(document.cookie.substring(i, j) == strArg) {
+				nEnd = document.cookie.indexOf (";", j);
+				if(nEnd == -1) nEnd = document.cookie.length;
+					return unescape(document.cookie.substring(j, nEnd));
+			}
+			i = document.cookie.indexOf(" ", i) + 1;
+			if (i == 0) break;
+		}
+	}
+	return "";
+}
+
+
+/**
+ * 비밀번호 규칙 check : 동일문자, 연속문자
+*/
+function checkPwdSameChar(pwd) {
+	var sameCnt 	= 0; 
+	var seqCnt_1 	= 0; 
+	var seqCnt_2 	= 0; 
+	var n_chrcode_0 = 0;
+	var n_chrcode_1 = 0;
+	var n_chrcode_2 = 0;
+	
+	for( var i=0; i < pwd.length; i++ )
+	{
+		n_chrcode_0 = parseInt(pwd.charAt(i).charCodeAt(0));
+		n_chrcode_1 = parseInt(pwd.charAt(i+1).charCodeAt(0));
+		n_chrcode_2 = parseInt(pwd.charAt(i+2).charCodeAt(0));
+		
+		//동일문자열
+		if( n_chrcode_0 - n_chrcode_1 == 0  && n_chrcode_1 - n_chrcode_2 == 0 ) {
+			sameCnt += 1;
+		}            		
+	
+		//연속문자열
+		if( n_chrcode_0 - n_chrcode_1 == 1  && n_chrcode_1 - n_chrcode_2 == 1 ) {
+			seqCnt_1 +=1;
+		}
+		if( n_chrcode_0 - n_chrcode_1 == -1 && n_chrcode_1 - n_chrcode_2 == -1 ) {
+			seqCnt_2 += 1;
+		}
+	}
+	
+	if( sameCnt > 0 ) {
+		alert("동일 영문,숫자,특수문자를 3번 이상 연속해서 사용하실 수 없습니다.");
+		return false;
+	}
+	
+	if( seqCnt_1 > 0 || seqCnt_2 > 0 ) {
+		alert("연속된 영문,숫자,특수문자를 3자 이상 사용 하실 수 없습니다.\n(예 : abc, cba, 123, 321)");
+		return false;
+	}
+	
+	return true;
+	
+}
+
+/**
+ * 모바일 체크
+*/
+function fnGetIsMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+	
